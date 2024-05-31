@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.554">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>On higher risk yielding higher rewards</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="notebook_files/libs/clipboard/clipboard.min.js"></script>
+<script src="notebook_files/libs/quarto-html/quarto.js"></script>
+<script src="notebook_files/libs/quarto-html/popper.min.js"></script>
+<script src="notebook_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="notebook_files/libs/quarto-html/anchor.min.js"></script>
+<link href="notebook_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="notebook_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="notebook_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="notebook_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="notebook_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">On higher risk yielding higher rewards</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="abstract" class="level2">
+<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
+<p>Navigating today’s financial markets to find an investment strategy is overwhelming. The abundance of data, ideas &amp; stories available is more than ever before.</p>
+<p>This scientific journal targets hobbyists who use regular apps for trading, with a focus on a simple strategy known as pairs trading.</p>
+<p><a href="https://www.investopedia.com/terms/p/pairstrade.asp#:~:text=Key%20Takeaways-,A%20pairs%20trade%20is%20a%20trading%20strategy%20that%20involves%20matching,group%20of%20technical%20analyst%20researchers.">Pairs trading</a> involves choosing two financial instruments, typically stocks, that historically show a strong correlation in their price movements. The core idea is that these instruments’ prices tend to move together, and deviations from this correlation can create profitable trading opportunities.</p>
+<p>Here’s how the strategy works:</p>
+<ul>
+<li><p><strong>Identify a Pair</strong>: Select two securities that have historically moved together in price. Monitor the Spread: Watch the price difference between the two securities. When this difference deviates significantly from its usual range, it suggests a trading opportunity.</p></li>
+<li><p><strong>Enter the Trade</strong>:</p>
+<ul>
+<li><strong>Long Position</strong>: Buy the security that is cheaper than usual compared to its pair.</li>
+<li><strong>Short Position</strong>: Sell the security that is more expensive than usual compared to its pair.</li>
+</ul></li>
+<li><p><strong>Convergence</strong>: The trade becomes profitable when the price difference returns to its normal range, as the prices of the two securities move back in sync.</p></li>
+</ul>
+<p>This scientific journal is a straightforward study on flipping pairs, helping hobbyists better understand why and how they do it this way.</p>
+<p>Using modern tools for scientific-grade research like <a href="https://numpy.org/">NumPy</a>, <a href="https://pandas.pydata.org/">Pandas</a>, <a href="https://matplotlib.org/">Matplotlib</a>, <a href="https://circleci.com/blog/prompt-engineering/">LLMs &amp; prompt engineering</a> &amp; <a href="https://jupyter.org/">Jupyter</a>. We concluded that using the most volatile pairs in the market tend to yield the best rewards for this particular average joe strategy.</p>
+<p>The study concludes that when aiming for the highest profits, flipping <a href="https://www.investopedia.com/terms/s/shitcoin.asp">shitcoins</a> is the way to go</p>
+</section>
+<section id="methodology" class="level2">
+<h2 class="anchored" data-anchor-id="methodology">Methodology</h2>
+<p>The methodology of this study is best described by splitting it into 2 subsections, tooling &amp; process.</p>
+<section id="tooling" class="level3">
+<h3 class="anchored" data-anchor-id="tooling">Tooling</h3>
+<p>The author of this study is not an experienced statician, actuarial scientist nor a data engineer.</p>
+<p>I am a software engineer that’s worked with <a href="https://rubyonrails.org/">Ruby/Rails</a> &amp; <a href="https://nodejs.org/en">Node.js</a>. I wanted to use <a href="https://www.python.org/">Python</a> &amp; it’s data science ecosystem for the study without having to invest a large amount of time picking up a new syntax and set of libraries.</p>
+<p>With new AI on the table, I decided to preload an <a href="https://chatgpt.com/">LLM</a> with the relevant context &amp; guide as if I was a technical lead guiding a developer through a tech stack I’m not savvy in. With that in mind, here’s the full list of tools &amp; techniques I used as-is to set this up:</p>
+<ul>
+<li><a href="https://uk.finance.yahoo.com/">Yahoo Finance</a> for fetching financial instrument pricing data in a timeseries format</li>
+<li><a href="https://binance.org/">Binancce</a> for fetching cryptocurrency financial instrument pricing data in a timeseries format</li>
+<li><a href="https://www.python.org/">Python</a> as the programming platform for the study</li>
+<li><a href="https://numpy.org/">Numpy</a> for array manipulation</li>
+<li><a href="https://pandas.pydata.org/">Pandas</a> for data analysis</li>
+<li><a href="https://matplotlib.org/">Matplotlib</a> for data visualisation</li>
+<li><a href="https://jupyter.org/">Jupyter Notebook</a> for organising everything together in a readable format</li>
+<li><a href="https://quarto.org/">Quarto</a> for technical publishing</li>
+<li><a href="https://distill.pub/">Distill</a> for inspiration on producing high grade scientific-style journals</li>
+<li><a href="https://allendowney.github.io/ModSimPy/">Modelling and simulation in Pyhon</a> for modelling the investment strategy</li>
+<li><a href="https://chatgpt.com/">ChatGPT</a> for bridging human language to Python syntax, albeit all the code was reviewed by me</li>
+<li>I also bounced ideas off a colleague. Shout out <a href="https://github.com/kiramclean">Kira McLean</a> &amp; <a href="https://scicloj.github.io/">Scicloj</a></li>
+</ul>
+</section>
+<section id="process" class="level3">
+<h3 class="anchored" data-anchor-id="process">Process</h3>
+<p>The code for this study can be found on the <a href="https://github.com/shellandbull/higher-risk-higher-rewards"><span class="citation" data-cites="shellandbull/higher-risk-higher-rewards">@shellandbull/higher-risk-higher-rewards</span></a></p>
+<p>Using personal, hobbyist-level, financial investment knowledge a pairs trading strategy was devised. The strategy is fairly simple</p>
+<p>2 Financial instruments are selected, let us call them A &amp; B. This flavour of pairs trading relies on actively tracking price changes between the 2 instruments to maximise gains by buying/selling them against each other. Let us go over an iteration of the strategy</p>
+<p>We start with 1 Bitcoin and 220 Tesla stocks</p>
+<table class="table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 21%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>BTC/USD - Price</th>
+<th>BTC/USD - Amount</th>
+<th>TSLA/USD - Price</th>
+<th>TSLA/USD - Amount</th>
+<th>Portfolio Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>60,000</code></td>
+<td><code>1.00</code></td>
+<td><code>220</code></td>
+<td><code>200</code></td>
+<td><code>$104,000</code></td>
+</tr>
+</tbody>
+</table>
+<p>Time goes by, and the prices change slightly. Bitcoin became more expensive, Tesla became cheaper.</p>
+<table class="table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 21%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>BTC/USD - Price</th>
+<th>BTC/USD - Amount</th>
+<th>TSLA/USD - Price</th>
+<th>TSLA/USD - Amount</th>
+<th>Portfolio Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>63,000</code></td>
+<td><code>1.00</code></td>
+<td><code>190</code></td>
+<td><code>200</code></td>
+<td><code>$101,000</code></td>
+</tr>
+</tbody>
+</table>
+<p>An opportunity pops out the water to say “What’s upppppp dawg”.</p>
+<p>We allocate <code>.3 BTC</code> so <code>$18,900</code> into Tesla. This means we bought <code>99.47</code> Tesla stocks</p>
+<table class="table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 25%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>BTC/USD - Price</th>
+<th>BTC/USD - Amount</th>
+<th>TSLA/USD - Price</th>
+<th>TSLA/USD - Amount</th>
+<th>Portfolio Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>63,000</code></td>
+<td><code>0.7</code></td>
+<td><code>190</code></td>
+<td><code>200 + 99.47 = 299.47</code></td>
+<td><code>$100,999</code></td>
+</tr>
+</tbody>
+</table>
+<p><em>P.D: I dropped some decimal points without rounding which is why the value of the portfolio fluctuated down. We can theorise these are trading fees to make the study seem more realistic</em></p>
+<p>The market moves again. Bitcoin maintains it’s price while Tesla recovers</p>
+<table class="table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 21%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>BTC/USD - Price</th>
+<th>BTC/USD - Amount</th>
+<th>TSLA/USD - Price</th>
+<th>TSLA/USD - Amount</th>
+<th>Portfolio Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>63,000</code></td>
+<td><code>0.7</code></td>
+<td><code>220</code></td>
+<td><code>299.47</code></td>
+<td><code>$109,983.4</code></td>
+</tr>
+</tbody>
+</table>
+<p>A profit of <code>$5,983.4</code> is retained. Voila!</p>
+<p>This of course, is a far cry from a perfect strategy. A few challenges come to mind:</p>
+<ul>
+<li>What if the price fluctuations do not benefit me?</li>
+<li>What if the market does not accept my order volumes recurrently?</li>
+<li>What if the investor does not have the resources to monitor the price in a fashion where benefits can be actioned upon?</li>
+</ul>
+<p>This study doesn’t aim to give the reader a <a href="https://en.wikipedia.org/wiki/Moneyball_(film)">Moneyball</a> on investing. If that was the case the author would be writing this study from some highly valued real state investment whereas I am now sitting in my humble home with a cat sitting on my lap.</p>
+<p>This strategy is far from perfect, there isn’t a guarantee on price fluctuations sailing your way. What can be done, is to measure the number of “opportunities” that existed in the past across any tuple of financial instruments to best determine what instrument set to use.</p>
+<p>With the strategy and tools set into place it becomes a matter of guiding an LLM across the study. The modus operandi for guiding the LLM across building the study is as follows:</p>
+<ul>
+<li>Using prompt engineering practices, the LLM is preloaded with industry specific context, such as books &amp; articles</li>
+<li>The LLM is instructed to adopt a personality(a cluster of adjectives) to fit the deliverable. A scientific-journal grade article</li>
+<li>An experiment is formulated without a hypothesis. The LLM is just requested to count, parse &amp; draw data</li>
+<li>A decision model is structured by a human after inspecting the data and formulating a hypothesis</li>
+<li>The LLM is instructed to plot the decision model, code is generated by the LLM</li>
+<li>The code is inspected by hand with a fine tooth comb, this involves bug fixes and styling changes</li>
+<li>With a usable study, further hypothesis are formulated. There are now new grounds to perform the same steps over the new questions</li>
+<li>Rinse &amp; repeat until a full study is built</li>
+</ul>
+<p><strong>WARNING</strong> This scientific journal styled blog post is a live piece of knowledge that’s actively under development. It aims to study the progress of LLMs in the context of financial investigation &amp; research on top of it’s actual objective</p>
+<p><em>hic sunt dracones</em>, there can be bugs. If you find one please submit a PR on the repo <a href="https://github.com/shellandbull/higher-risk-higher-rewards"><span class="citation" data-cites="shellandbull/higher-risk-higher-rewards">@shellandbull/higher-risk-higher-rewards</span></a></p>
+<div id="3e01a660-762f-420b-bc09-5e79eb79bed2" class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Results</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="looking-at-potential-trading-margins" class="level1">
+<h1>Looking at potential trading margins</h1>
+<p>The gains of a potential speculative strategy are studied by plotting 2 pairs</p>
+<ul>
+<li><code>BTC/USD</code></li>
+<li><code>CRO/USD</code></li>
+</ul>
+<p>It’s a simple “buy low and sell high” trading strategy only using these 2 instruments. I visualise what my potential margins are by plotting the % price change of the two on the same timeseries whilst highlighting filling only the areas where one offsets against the other. In layman terms: the coloured areas are the moments where we can make money</p>
+<div id="edf4eb6b-4b04-4eb7-8d6a-1daad79ebf86" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run scripts<span class="op">/</span>daily_change.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[*********************100%%**********************]  2 of 2 completed</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="notebook_files/figure-html/cell-3-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="putting-it-to-the-test" class="level1">
+<h1>Putting it to the test</h1>
+<p>The visualisation shows me that there’s room for margins, however. How will this behave in the wild?</p>
+<p>I create a simple strategy with some rules:</p>
+<ul>
+<li>On every tick, we compute the percentual change of both instruments vs the day before</li>
+<li>if the change of one is greater than the other. e,g: BTC became more expensive than CRO</li>
+<li>We buy CRO with BTC</li>
+<li>We rinse &amp; repeat</li>
+</ul>
+<div id="715de30f-54fc-4f06-b610-25b7b6495f62" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run scripts<span class="op">/</span>basic_speculation.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[*********************100%%**********************]  2 of 2 completed</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="notebook_files/figure-html/cell-4-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="measuring-different-strategies" class="level1">
+<h1>Measuring different strategies</h1>
+<p>Now that a foundation is set, I can draw N strategies on the canvas to measure how different approaches increase my portfolio value. A proposed problem for ML to solve would be to:</p>
+<ul>
+<li>Optimise the parameters to find the best strategy</li>
+<li>Optimise the parameters to find the best instruments</li>
+<li>Optimise the parameters to find the best trading frequency</li>
+</ul>
+<p>🌟 The outcome is to have the highest portfolio value which makes it very simple</p>
+<div id="0695d5b1-7995-4c46-8b18-06e90c596472" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run scripts<span class="op">/</span>multi_strategy_speculation.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[*********************100%%**********************]  2 of 2 completed</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="notebook_files/figure-html/cell-5-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="a-practical-example-measuring-strategies" class="level1">
+<h1>A practical example, measuring strategies</h1>
+<p><code>BTC</code> &amp; <code>CRO</code> aren’t the only 2 instruments on the market. What if we grabbed another pair? I went for <code>TSLA</code> and <code>PYPL</code></p>
+<p>We can also mix and match</p>
+<div id="694609b6-9851-4cc5-8d52-de0affb0fc04" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run scripts<span class="op">/</span>multi_instrument_multi_strategy.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[*********************100%%**********************]  2 of 2 completed
+[*********************100%%**********************]  2 of 2 completed
+[*********************100%%**********************]  2 of 2 completed</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="notebook_files/figure-html/cell-6-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="programmatically-finding-the-best-pair-to-trade" class="level1">
+<h1>Programmatically finding the best pair to trade</h1>
+<p>A successful gain occurs when we “flip” twice and the price variation was always on our side.</p>
+<p>Using historical data we can look at every single possible combination of financial instruments that over the last 1 year yield the maximum gains</p>
+<p>We can then rank them and come up with a top 3 or 5. The algorithm to find this pair is very simple</p>
+<ul>
+<li>Take all financial instruments and iterate over each one</li>
+<li>Inside that loop, iterate again over each one</li>
+<li>Now we have <em>any</em> financial instrument pair available on scope</li>
+<li>For each pair, with historical data to a year, count the number of instances where
+<ul>
+<li>Any 2 trades yielded a gain. Said percentual gain can be computed numerically</li>
+<li>This new value becomes a ranking criteria to sort by as our new data structure is a pair made up of 2 instruments</li>
+</ul></li>
+</ul>
+<p>I’ll come up with the top pairs of instruments to trade. The script can be found here. It must be run on the background due to its data size</p>
+<pre><code>scripts/top_pairs_to_trade.py</code></pre>
+<div id="da0e4d5d-ef81-4cc0-87bb-e84d1e6ef851" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load CSV file into DataFrame</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'data/selected_pairs.csv'</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">pair</th>
+<th data-quarto-table-cell-role="th">score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>AISP / AULT</td>
+<td>2047.352423</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>AULT / AISP</td>
+<td>2047.352423</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>WTO / SBFM</td>
+<td>1995.649214</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>FET-USD / AXL17799-USD</td>
+<td>1323.654462</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>AXL17799-USD / FET-USD</td>
+<td>1323.654462</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">439</td>
+<td>JTAIZ / GCTS</td>
+<td>4489.530701</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">440</td>
+<td>JAGX / JTAIZ</td>
+<td>4426.418104</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">441</td>
+<td>CFG-USD / FTT-USD</td>
+<td>1721.783582</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">442</td>
+<td>FTT-USD / CFG-USD</td>
+<td>1721.783582</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">443</td>
+<td>GRI / FTT-USD</td>
+<td>1609.159168</td>
+</tr>
+</tbody>
+</table>
+
+<p>444 rows × 2 columns</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="scoring-combinations" class="level1">
+<h1>Scoring combinations</h1>
+<p>We now have a list with ~450 entries of stock pairs.</p>
+<p>The <strong>score</strong> is the absolute value of each days percentual price change aggregation difference between the 2. This way we can see who has the most gains. Let’s try to see how a pair of these fairs on my previous simulation</p>
+<p>Here we trade <code>CXAI</code> and <code>ZETA-USD</code></p>
+<div id="959012bf-40d9-4803-b9f1-f5143950b75f" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run scripts<span class="op">/</span>daily_change_top.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[*********************100%%**********************]  2 of 2 completed
+/Users/xyzxyz/dev/sergei_moneysevich/scripts/daily_change_top.py:12: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  percent_changes = data['Close'].pct_change() * 100</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="notebook_files/figure-html/cell-8-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>It appears that trading low-market-cap cryptocurrencies, colloquially known as “shitcoins,” presents a significant speculative opportunity for substantial financial gain.</p>
+<p>Given that this is an early-stage study, further refinements and adaptations are necessary.</p>
+<p>Preliminary results indicate a potential doubling of capital when trading these assets over the past two months.</p>
+<div id="f684d48e-e286-48c9-9c11-f74b7be0e507" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run scripts<span class="op">/</span>top_multi_strategy_speculation.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[*********************100%%**********************]  2 of 2 completed</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="notebook_files/figure-html/cell-9-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

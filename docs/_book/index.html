@@ -163,14 +163,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#tooling" id="toc-tooling" class="nav-link" data-scroll-target="#tooling"><span class="header-section-number">0.2.1</span> Tooling</a></li>
   <li><a href="#process" id="toc-process" class="nav-link" data-scroll-target="#process"><span class="header-section-number">0.2.2</span> Process</a></li>
   </ul></li>
-  <li><a href="#looking-at-potential-trading-margins" id="toc-looking-at-potential-trading-margins" class="nav-link" data-scroll-target="#looking-at-potential-trading-margins"><span class="header-section-number">1</span> Looking at potential trading margins</a></li>
-  <li><a href="#putting-it-to-the-test" id="toc-putting-it-to-the-test" class="nav-link" data-scroll-target="#putting-it-to-the-test"><span class="header-section-number">2</span> Putting it to the test</a></li>
-  <li><a href="#measuring-different-strategies" id="toc-measuring-different-strategies" class="nav-link" data-scroll-target="#measuring-different-strategies"><span class="header-section-number">3</span> Measuring different strategies</a></li>
-  <li><a href="#a-practical-example-measuring-strategies" id="toc-a-practical-example-measuring-strategies" class="nav-link" data-scroll-target="#a-practical-example-measuring-strategies"><span class="header-section-number">4</span> A practical example, measuring strategies</a></li>
-  <li><a href="#programmatically-finding-the-best-pair-to-trade" id="toc-programmatically-finding-the-best-pair-to-trade" class="nav-link" data-scroll-target="#programmatically-finding-the-best-pair-to-trade"><span class="header-section-number">5</span> Programmatically finding the best pair to trade</a></li>
-  <li><a href="#scoring-combinations" id="toc-scoring-combinations" class="nav-link" data-scroll-target="#scoring-combinations"><span class="header-section-number">6</span> Scoring combinations</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">7</span> Conclusion</a></li>
-  <li><a href="#contact-me" id="toc-contact-me" class="nav-link" data-scroll-target="#contact-me"><span class="header-section-number">8</span> Contact me</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results"><span class="header-section-number">1</span> Results</a></li>
+  <li><a href="#looking-at-potential-trading-margins" id="toc-looking-at-potential-trading-margins" class="nav-link" data-scroll-target="#looking-at-potential-trading-margins"><span class="header-section-number">2</span> Looking at potential trading margins</a></li>
+  <li><a href="#putting-it-to-the-test" id="toc-putting-it-to-the-test" class="nav-link" data-scroll-target="#putting-it-to-the-test"><span class="header-section-number">3</span> Putting it to the test</a></li>
+  <li><a href="#measuring-different-strategies" id="toc-measuring-different-strategies" class="nav-link" data-scroll-target="#measuring-different-strategies"><span class="header-section-number">4</span> Measuring different strategies</a></li>
+  <li><a href="#a-practical-example-measuring-strategies" id="toc-a-practical-example-measuring-strategies" class="nav-link" data-scroll-target="#a-practical-example-measuring-strategies"><span class="header-section-number">5</span> A Practical Example: Measuring Strategies</a></li>
+  <li><a href="#programmatically-finding-the-best-pair-to-trade" id="toc-programmatically-finding-the-best-pair-to-trade" class="nav-link" data-scroll-target="#programmatically-finding-the-best-pair-to-trade"><span class="header-section-number">6</span> Programmatically Finding the Best Pair to Trade</a></li>
+  <li><a href="#scoring-combinations" id="toc-scoring-combinations" class="nav-link" data-scroll-target="#scoring-combinations"><span class="header-section-number">7</span> Scoring Combinations</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">8</span> Conclusion</a></li>
+  <li><a href="#contact" id="toc-contact" class="nav-link" data-scroll-target="#contact"><span class="header-section-number">9</span> Contact</a></li>
   </ul>
 </nav>
     </div>
@@ -379,45 +380,67 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p><strong>WARNING</strong> This scientific journal styled blog post is a live piece of knowledge that’s actively under development. It aims to study the progress of LLMs in the context of financial investigation &amp; research on top of it’s actual objective</p>
 <p><em>hic sunt dracones</em>, there can be bugs. If you find one please submit a PR on the repo <a href="https://github.com/shellandbull/higher-risk-higher-rewards"><span class="citation" data-cites="shellandbull/higher-risk-higher-rewards">@shellandbull/higher-risk-higher-rewards</span></a></p>
-<div id="cad57bd2" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Results</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 </section>
-<section id="looking-at-potential-trading-margins" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Looking at potential trading margins</h1>
-<p>The gains of a potential speculative strategy are studied by plotting 2 pairs</p>
+<section id="results" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Results</h1>
+</section>
+<section id="looking-at-potential-trading-margins" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Looking at potential trading margins</h1>
+<p>The potential gains of a speculative trading strategy are analyzed by examining two pairs:</p>
 <ul>
 <li><code>BTC/USD</code></li>
 <li><code>CRO/USD</code></li>
 </ul>
-<p>It’s a simple “buy low and sell high” trading strategy only using these 2 instruments. I visualise what my potential margins are by plotting the % price change of the two on the same timeseries whilst highlighting filling only the areas where one offsets against the other. In layman terms: the coloured areas are the moments where we can make money</p>
-<div id="d5946902" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run scripts<span class="op">/</span>daily_change.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This strategy utilizes a straightforward “buy low, sell high” approach exclusively with these two instruments. To visualize potential margins, the percentage price changes of the two pairs are plotted on the same time series, with areas where one offsets the other highlighted. In layman’s terms, the colored areas indicate moments where profit opportunities arise. The gains of a potential speculative strategy are studied by plotting 2 pairs</p>
+<div id="c066ac7f" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run scripts<span class="op">/</span>daily_change.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>[                       0%%                      ][*********************100%%**********************]  2 of 2 completed</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-3-output-2.png" width="1115" height="597" class="figure-img"></p>
+<p><img src="index_files/figure-html/cell-2-output-2.png" width="1115" height="597" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="putting-it-to-the-test" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Putting it to the test</h1>
-<p>The visualisation shows me that there’s room for margins, however. How will this behave in the wild?</p>
-<p>I create a simple strategy with some rules:</p>
+<section id="putting-it-to-the-test" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Putting it to the test</h1>
+<p>The visualization indicates that there is potential for margins. However, how will this strategy perform in real market conditions?</p>
+<p>A simple strategy with specific rules is devised:</p>
 <ul>
-<li>On every tick, we compute the percentual change of both instruments vs the day before</li>
-<li>if the change of one is greater than the other. e,g: BTC became more expensive than CRO</li>
-<li>We buy CRO with BTC</li>
-<li>We rinse &amp; repeat</li>
+<li>On every tick, we compute the percentage change of both instruments compared to the previous day.</li>
+<li>If the change in one instrument is greater than the other (e.g., BTC becomes more expensive than CRO), we buy CRO with BTC.</li>
+<li>This process is repeated iteratively.</li>
 </ul>
-<div id="2efda764" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run scripts<span class="op">/</span>basic_speculation.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="60b403d0" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run scripts<span class="op">/</span>basic_speculation.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[                       0%%                      ][*********************100%%**********************]  2 of 2 completed</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-3-output-2.png" width="842" height="523" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="measuring-different-strategies" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Measuring different strategies</h1>
+<p>With the foundation established, I can design multiple strategies to evaluate how different approaches affect portfolio value. A proposed problem for machine learning to solve would be to:</p>
+<ul>
+<li>Optimize parameters to determine the best strategy</li>
+<li>Optimize parameters to identify the best instruments</li>
+<li>Optimize parameters to find the optimal trading frequency</li>
+</ul>
+<p>🌟 The objective is to achieve the highest portfolio value, making the goal straightforward.</p>
+<div id="5d8e1c58" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run scripts<span class="op">/</span>multi_strategy_speculation.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>[                       0%%                      ][*********************100%%**********************]  2 of 2 completed</code></pre>
 </div>
@@ -430,19 +453,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="measuring-different-strategies" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Measuring different strategies</h1>
-<p>Now that a foundation is set, I can draw N strategies on the canvas to measure how different approaches increase my portfolio value. A proposed problem for ML to solve would be to:</p>
-<ul>
-<li>Optimise the parameters to find the best strategy</li>
-<li>Optimise the parameters to find the best instruments</li>
-<li>Optimise the parameters to find the best trading frequency</li>
-</ul>
-<p>🌟 The outcome is to have the highest portfolio value which makes it very simple</p>
-<div id="092c61c1" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run scripts<span class="op">/</span>multi_strategy_speculation.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="a-practical-example-measuring-strategies" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> A Practical Example: Measuring Strategies</h1>
+<p><code>BTC</code> and <code>CRO</code> are not the only instruments available in the market. What if we consider another pair? For this example, I chose <code>TSLA</code> and <code>PYPL</code>.</p>
+<p>We can also experiment by mixing and matching different pairs to explore various combinations and their impact on portfolio value.</p>
+<div id="fca1876e" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run scripts<span class="op">/</span>multi_instrument_multi_strategy.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>[                       0%%                      ][*********************100%%**********************]  2 of 2 completed</code></pre>
+<pre><code>[                       0%%                      ][*********************100%%**********************]  2 of 2 completed
+[                       0%%                      ][*********************100%%**********************]  2 of 2 completed
+[                       0%%                      ][*********************100%%**********************]  2 of 2 completed</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -453,51 +473,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="a-practical-example-measuring-strategies" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> A practical example, measuring strategies</h1>
-<p><code>BTC</code> &amp; <code>CRO</code> aren’t the only 2 instruments on the market. What if we grabbed another pair? I went for <code>TSLA</code> and <code>PYPL</code></p>
-<p>We can also mix and match</p>
-<div id="2faa5624" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run scripts<span class="op">/</span>multi_instrument_multi_strategy.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>[                       0%%                      ][*********************100%%**********************]  2 of 2 completed
-[                       0%%                      ][*********************100%%**********************]  2 of 2 completed
-[                       0%%                      ][*********************100%%**********************]  2 of 2 completed</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/cell-6-output-2.png" width="842" height="523" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="programmatically-finding-the-best-pair-to-trade" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Programmatically finding the best pair to trade</h1>
-<p>A successful gain occurs when we “flip” twice and the price variation was always on our side.</p>
-<p>Using historical data we can look at every single possible combination of financial instruments that over the last 1 year yield the maximum gains</p>
-<p>We can then rank them and come up with a top 3 or 5. The algorithm to find this pair is very simple</p>
+<section id="programmatically-finding-the-best-pair-to-trade" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Programmatically Finding the Best Pair to Trade</h1>
+<p>A successful gain occurs when we “flip” twice, and the price variation is always in our favor.</p>
+<p>By using historical data, we can examine every possible combination of financial instruments over the past year to identify those yielding the maximum gains.</p>
+<p>We can then rank these pairs and derive a top 3 or 5. The algorithm to identify these pairs is straightforward:</p>
 <ul>
-<li>Take all financial instruments and iterate over each one</li>
-<li>Inside that loop, iterate again over each one</li>
-<li>Now we have <em>any</em> financial instrument pair available on scope</li>
-<li>For each pair, with historical data to a year, count the number of instances where
+<li>Iterate over all financial instruments.</li>
+<li>For each instrument, iterate again over all financial instruments.</li>
+<li>This nested iteration provides all possible financial instrument pairs.</li>
+<li>For each pair, using historical data from the past year, count the number of instances where:
 <ul>
-<li>Any 2 trades yielded a gain. Said percentual gain can be computed numerically</li>
-<li>This new value becomes a ranking criteria to sort by as our new data structure is a pair made up of 2 instruments</li>
+<li>Any two trades resulted in a gain, with the percentage gain computed numerically.</li>
+<li>This value becomes the ranking criterion, and our new data structure is a pair consisting of two instruments.</li>
 </ul></li>
 </ul>
-<p>I’ll come up with the top pairs of instruments to trade. The script can be found here. It must be run on the background due to its data size</p>
+<p>I will determine the top pairs of instruments to trade. The script can be found here and should be run in the background due to its large data size.</p>
 <pre><code>scripts/top_pairs_to_trade.py</code></pre>
-<div id="68dc0a98" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load CSV file into DataFrame</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'data/selected_pairs.csv'</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div id="dea138c6" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load CSV file into DataFrame</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'data/selected_pairs.csv'</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 <div>
 
@@ -575,13 +575,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="scoring-combinations" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Scoring combinations</h1>
-<p>We now have a list with ~450 entries of stock pairs.</p>
-<p>The <strong>score</strong> is the absolute value of each days percentual price change aggregation difference between the 2. This way we can see who has the most gains. Let’s try to see how a pair of these fairs on my previous simulation</p>
-<p>Here we trade <code>CXAI</code> and <code>ZETA-USD</code></p>
-<div id="c7c933ed" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run scripts<span class="op">/</span>daily_change_top.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="scoring-combinations" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Scoring Combinations</h1>
+<p>We now have a list of approximately 450 entries of stock pairs.</p>
+<p>The <strong>score</strong> is calculated as the absolute value of the aggregated percentage price change difference between the two stocks each day. This method allows us to identify the pairs with the highest potential gains. Let’s test one of these pairs using our previous simulation framework.</p>
+<p>In this example, we trade <code>CXAI</code> and <code>ZETA-USD</code>.</p>
+<div id="29b581e0" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run scripts<span class="op">/</span>daily_change_top.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>[                       0%%                      ][*********************100%%**********************]  2 of 2 completed
 /Users/xyzxyz/dev/higher-risk-higher-rewards/docs/scripts/daily_change_top.py:12: FutureWarning:
@@ -592,34 +592,39 @@ The default fill_method='pad' in DataFrame.pct_change is deprecated and will be 
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-8-output-2.png" width="1124" height="597" class="figure-img"></p>
+<p><img src="index_files/figure-html/cell-7-output-2.png" width="1124" height="597" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="conclusion" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Conclusion</h1>
+<section id="conclusion" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Conclusion</h1>
 <p>It appears that trading low-market-cap cryptocurrencies, colloquially known as “shitcoins,” presents a significant speculative opportunity for substantial financial gain.</p>
 <p>Given that this is an early-stage study, further refinements and adaptations are necessary.</p>
 <p>Preliminary results indicate a potential doubling of capital when trading these assets over the past two months.</p>
-<div id="dd54e800" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run scripts<span class="op">/</span>top_multi_strategy_speculation.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="23e05019" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run scripts<span class="op">/</span>top_multi_strategy_speculation.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>[                       0%%                      ][*********************100%%**********************]  2 of 2 completed</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-9-output-2.png" width="850" height="523" class="figure-img"></p>
+<p><img src="index_files/figure-html/cell-8-output-2.png" width="850" height="523" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="contact-me" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> Contact me</h1>
-<p>If you enjoyed reading this or have any observations to make please do reach out on <a href="https://github.com/shellandbull">Github <span class="citation" data-cites="shellandbull">@shellandbull</span></a>, <a href="https://www.linkedin.com/in/mario-gintili-software-engineer/">Linkedin</a> or email at <code>mariojgintili at gmail dot com</code></p>
+<section id="contact" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Contact</h1>
+<p>If you have any feedback, recommendations or ammendments to make to this study I’d like to speak to you! You can find me on:</p>
+<ul>
+<li><a href="https://github.com/shellandbull">Github <span class="citation" data-cites="shellandbull">@shellandbull</span></a></li>
+<li><a href="https://www.linkedin.com/in/mario-gintili-software-engineer/">Linkedin</a></li>
+<li>Email <code>mariojgintili at gmail dot com</code></li>
+</ul>
 
 
 </section>

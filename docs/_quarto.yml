@@ -3,6 +3,7 @@ format:
   revealjs: {theme: solarized, navigation-mode: vertical, transition: slide, background-transition: fade, incremental: true}
 project: {type: book}
 book:
-  title: On higher risks yielding higher rewards
+  title: "On higher risks yielding higher rewards"
   chapters: [index.qmd]
+  navbar: false
 # resources: "*/*.csv"

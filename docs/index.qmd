@@ -118,18 +118,17 @@ With the strategy and tools set into place it becomes a matter of guiding an LLM
 
 *hic sunt dracones*, there can be bugs. If you find one please submit a PR on the repo [@shellandbull/higher-risk-higher-rewards](https://github.com/shellandbull/higher-risk-higher-rewards)
 
-```{python}
 # Results
-```
 
 # Looking at potential trading margins
 
-The gains of a potential speculative strategy are studied by plotting 2 pairs
+The potential gains of a speculative trading strategy are analyzed by examining two pairs:
 
 - `BTC/USD`
 - `CRO/USD`
 
-It's a simple "buy low and sell high" trading strategy only using these 2 instruments. I visualise what my potential margins are by plotting the % price change of the two on the same timeseries whilst highlighting filling only the areas where one offsets against the other. In layman terms: the coloured areas are the moments where we can make money
+This strategy utilizes a straightforward "buy low, sell high" approach exclusively with these two instruments. To visualize potential margins, the percentage price changes of the two pairs are plotted on the same time series, with areas where one offsets the other highlighted. In layman's terms, the colored areas indicate moments where profit opportunities arise.
+The gains of a potential speculative strategy are studied by plotting 2 pairs
 
 ```{python}
 %run scripts/daily_change.py
@@ -137,60 +136,58 @@ It's a simple "buy low and sell high" trading strategy only using these 2 instru
 
 # Putting it to the test
 
-The visualisation shows me that there's room for margins, however. How will this behave in the wild?
+The visualization indicates that there is potential for margins. However, how will this strategy perform in real market conditions?
 
-I create a simple strategy with some rules:
+A simple strategy with specific rules is devised:
 
-- On every tick, we compute the percentual change of both instruments vs the day before
-- if the change of one is greater than the other. e,g: BTC became more expensive than CRO
-- We buy CRO with BTC
-- We rinse & repeat
+- On every tick, we compute the percentage change of both instruments compared to the previous day.
+- If the change in one instrument is greater than the other (e.g., BTC becomes more expensive than CRO), we buy CRO with BTC.
+- This process is repeated iteratively.
 
 ```{python}
 %run scripts/basic_speculation.py
 ```
 
-
 # Measuring different strategies
 
-Now that a foundation is set, I can draw N strategies on the canvas to measure how different approaches increase my portfolio value. A proposed problem for ML to solve would be to:
+With the foundation established, I can design multiple strategies to evaluate how different approaches affect portfolio value. A proposed problem for machine learning to solve would be to:
 
-- Optimise the parameters to find the best strategy
-- Optimise the parameters to find the best instruments
-- Optimise the parameters to find the best trading frequency
+- Optimize parameters to determine the best strategy
+- Optimize parameters to identify the best instruments
+- Optimize parameters to find the optimal trading frequency
 
- 🌟 The outcome is to have the highest portfolio value which makes it very simple
+🌟 The objective is to achieve the highest portfolio value, making the goal straightforward.
 
 ```{python}
 %run scripts/multi_strategy_speculation.py
 ```
 
-# A practical example, measuring strategies
+# A Practical Example: Measuring Strategies
 
-`BTC` & `CRO` aren't the only 2 instruments on the market. What if we grabbed another pair? I went for `TSLA` and `PYPL`
+`BTC` and `CRO` are not the only instruments available in the market. What if we consider another pair? For this example, I chose `TSLA` and `PYPL`.
 
-We can also mix and match
+We can also experiment by mixing and matching different pairs to explore various combinations and their impact on portfolio value.
 
 ```{python}
 %run scripts/multi_instrument_multi_strategy.py
 ```
 
-# Programmatically finding the best pair to trade
+# Programmatically Finding the Best Pair to Trade
 
-A successful gain occurs when we "flip" twice and the price variation was always on our side.
+A successful gain occurs when we "flip" twice, and the price variation is always in our favor.
 
-Using historical data we can look at every single possible combination of financial instruments that over the last 1 year yield the maximum gains
+By using historical data, we can examine every possible combination of financial instruments over the past year to identify those yielding the maximum gains.
 
-We can then rank them and come up with a top 3 or 5. The algorithm to find this pair is very simple
+We can then rank these pairs and derive a top 3 or 5. The algorithm to identify these pairs is straightforward:
 
-- Take all financial instruments and iterate over each one
-- Inside that loop, iterate again over each one
-- Now we have *any* financial instrument pair available on scope
-- For each pair, with historical data to a year, count the number of instances where
-  - Any 2 trades yielded a gain. Said percentual gain can be computed numerically
-  - This new value becomes a ranking criteria to sort by as our new data structure is a pair made up of 2 instruments
- 
-I'll come up with the top pairs of instruments to trade. The script can be found here. It must be run on the background due to its data size
+- Iterate over all financial instruments.
+- For each instrument, iterate again over all financial instruments.
+- This nested iteration provides all possible financial instrument pairs.
+- For each pair, using historical data from the past year, count the number of instances where:
+  - Any two trades resulted in a gain, with the percentage gain computed numerically.
+  - This value becomes the ranking criterion, and our new data structure is a pair consisting of two instruments.
+
+I will determine the top pairs of instruments to trade. The script can be found here and should be run in the background due to its large data size.
 
 ```
 scripts/top_pairs_to_trade.py
@@ -205,13 +202,13 @@ df = pd.read_csv('data/selected_pairs.csv')
 df
 ```
 
-# Scoring combinations
+# Scoring Combinations
 
-We now have a list with ~450 entries of stock pairs.
+We now have a list of approximately 450 entries of stock pairs.
 
-The **score** is the absolute value of each days percentual price change aggregation difference between the 2. This way we can see who has the most gains. Let's try to see how a pair of these fairs on my previous simulation
+The **score** is calculated as the absolute value of the aggregated percentage price change difference between the two stocks each day. This method allows us to identify the pairs with the highest potential gains. Let's test one of these pairs using our previous simulation framework.
 
-Here we trade `CXAI` and `ZETA-USD`
+In this example, we trade `CXAI` and `ZETA-USD`.
 
 ```{python}
 %run scripts/daily_change_top.py
@@ -229,8 +226,11 @@ Preliminary results indicate a potential doubling of capital when trading these 
 %run scripts/top_multi_strategy_speculation.py
 ```
 
-# Contact me
+# Contact
 
-If you enjoyed reading this or have any observations to make please do reach out on [Github @shellandbull](https://github.com/shellandbull), [Linkedin](https://www.linkedin.com/in/mario-gintili-software-engineer/) or email at `mariojgintili at gmail dot com`
+If you have any feedback, recommendations or ammendments to make to this study I'd like to speak to you! You can find me on:
 
+- [Github @shellandbull](https://github.com/shellandbull)
+- [Linkedin](https://www.linkedin.com/in/mario-gintili-software-engineer/)
+- Email `mariojgintili at gmail dot com`
 

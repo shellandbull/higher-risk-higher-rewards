@@ -393,7 +393,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>CRO/USD</code></li>
 </ul>
 <p>This strategy utilizes a straightforward “buy low, sell high” approach exclusively with these two instruments. To visualize potential margins, the percentage price changes of the two pairs are plotted on the same time series, with areas where one offsets the other highlighted. In layman’s terms, the colored areas indicate moments where profit opportunities arise. The gains of a potential speculative strategy are studied by plotting 2 pairs</p>
-<div id="c066ac7f" class="cell" data-execution_count="1">
+<div id="189c060c" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run scripts<span class="op">/</span>daily_change.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>[                       0%%                      ][*********************100%%**********************]  2 of 2 completed</code></pre>
@@ -416,7 +416,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>If the change in one instrument is greater than the other (e.g., BTC becomes more expensive than CRO), we buy CRO with BTC.</li>
 <li>This process is repeated iteratively.</li>
 </ul>
-<div id="60b403d0" class="cell" data-execution_count="2">
+<div id="73c13be1" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run scripts<span class="op">/</span>basic_speculation.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>[                       0%%                      ][*********************100%%**********************]  2 of 2 completed</code></pre>
@@ -439,7 +439,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Optimize parameters to find the optimal trading frequency</li>
 </ul>
 <p>🌟 The objective is to achieve the highest portfolio value, making the goal straightforward.</p>
-<div id="5d8e1c58" class="cell" data-execution_count="3">
+<div id="5d68f02c" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run scripts<span class="op">/</span>multi_strategy_speculation.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>[                       0%%                      ][*********************100%%**********************]  2 of 2 completed</code></pre>
@@ -457,7 +457,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1 data-number="5"><span class="header-section-number">5</span> A Practical Example: Measuring Strategies</h1>
 <p><code>BTC</code> and <code>CRO</code> are not the only instruments available in the market. What if we consider another pair? For this example, I chose <code>TSLA</code> and <code>PYPL</code>.</p>
 <p>We can also experiment by mixing and matching different pairs to explore various combinations and their impact on portfolio value.</p>
-<div id="fca1876e" class="cell" data-execution_count="4">
+<div id="2d67f3de" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run scripts<span class="op">/</span>multi_instrument_multi_strategy.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>[                       0%%                      ][*********************100%%**********************]  2 of 2 completed
@@ -490,7 +490,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>I will determine the top pairs of instruments to trade. The script can be found here and should be run in the background due to its large data size.</p>
 <pre><code>scripts/top_pairs_to_trade.py</code></pre>
-<div id="dea138c6" class="cell" data-execution_count="5">
+<div id="b5d7e532" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load CSV file into DataFrame</span></span>
@@ -580,7 +580,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We now have a list of approximately 450 entries of stock pairs.</p>
 <p>The <strong>score</strong> is calculated as the absolute value of the aggregated percentage price change difference between the two stocks each day. This method allows us to identify the pairs with the highest potential gains. Let’s test one of these pairs using our previous simulation framework.</p>
 <p>In this example, we trade <code>CXAI</code> and <code>ZETA-USD</code>.</p>
-<div id="29b581e0" class="cell" data-execution_count="6">
+<div id="38e5f77f" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run scripts<span class="op">/</span>daily_change_top.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>[                       0%%                      ][*********************100%%**********************]  2 of 2 completed
@@ -603,7 +603,7 @@ The default fill_method='pad' in DataFrame.pct_change is deprecated and will be 
 <p>It appears that trading low-market-cap cryptocurrencies, colloquially known as “shitcoins,” presents a significant speculative opportunity for substantial financial gain.</p>
 <p>Given that this is an early-stage study, further refinements and adaptations are necessary.</p>
 <p>Preliminary results indicate a potential doubling of capital when trading these assets over the past two months.</p>
-<div id="23e05019" class="cell" data-execution_count="7">
+<div id="07c79ea0" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run scripts<span class="op">/</span>top_multi_strategy_speculation.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>[                       0%%                      ][*********************100%%**********************]  2 of 2 completed</code></pre>

@@ -5,5 +5,7 @@ project: {type: book}
 book:
   title: "On higher risks yielding higher rewards"
   chapters: [index.qmd]
+  page-navigation: false
+website:
   navbar: false
-# resources: "*/*.csv"
+  page-navigation: true

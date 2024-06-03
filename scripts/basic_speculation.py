@@ -1,6 +1,6 @@
 import yfinance as yf
 import numpy as np
-import matplotlib.pyplot as plt
+import plotly.graph_objs as go
 import pandas as pd
 
 # Fetch historical data
@@ -51,15 +51,24 @@ def main():
     data = fetch_data()
     portfolio_value = simulate_trading(data, initial_btc, initial_cro)
     
-    # Plotting the portfolio value
-    plt.figure(figsize=(10, 6))
-    plt.plot(data.index[1:], portfolio_value, label='Portfolio Value')
-    plt.title('Portfolio Value Over Time')
-    plt.xlabel('Date')
-    plt.ylabel('Portfolio Value (USD)')
-    plt.legend()
-    plt.grid(True)
-    plt.show()
+    # Create 2D plot
+    fig = go.Figure()
+
+    fig.add_trace(go.Scatter(
+        x=data.index[1:],
+        y=portfolio_value,
+        mode='lines',
+        name='Portfolio Value'
+    ))
+
+    fig.update_layout(
+        title='Portfolio Value Over Time',
+        xaxis_title='Date',
+        yaxis_title='Portfolio Value (USD)',
+        showlegend=True
+    )
+
+    fig.show()
 
 # Run the main function
 main()

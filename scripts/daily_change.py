@@ -1,5 +1,5 @@
 import yfinance as yf
-import matplotlib.pyplot as plt
+import plotly.graph_objs as go
 import pandas as pd
 
 # Define the tickers
@@ -11,29 +11,53 @@ data = tickers.history(period="2mo")
 # Calculate the daily percentage change
 percent_changes = data['Close'].pct_change() * 100
 
-# Plotting
-plt.figure(figsize=(14, 7))
-for ticker in ['BTC-USD', 'CRO-USD']:
-    plt.plot(percent_changes.index, percent_changes[ticker], label=f'{ticker} Daily % Change')
+# Create traces for BTC-USD and CRO-USD
+btc_trace = go.Scatter(
+    x=percent_changes.index,
+    y=percent_changes['BTC-USD'],
+    mode='lines',
+    name='BTC-USD Daily % Change'
+)
 
-# Find areas where BTC-USD outperforms CRO-USD
-btc_over_cro = percent_changes['BTC-USD'] > percent_changes['CRO-USD']
-cro_over_btc = percent_changes['CRO-USD'] > percent_changes['BTC-USD']
+cro_trace = go.Scatter(
+    x=percent_changes.index,
+    y=percent_changes['CRO-USD'],
+    mode='lines',
+    name='CRO-USD Daily % Change'
+)
 
-# Highlight non-overlapping areas where BTC-USD outperforms CRO-USD
-plt.fill_between(percent_changes.index, percent_changes['BTC-USD'], percent_changes['CRO-USD'], 
-                 where=btc_over_cro, facecolor='darkgreen', alpha=0.5, interpolate=True,
-                 label='BTC Gains Over CRO')
+# Highlight areas where BTC-USD outperforms CRO-USD and vice versa
+btc_over_cro = go.Scatter(
+    x=percent_changes.index,
+    y=percent_changes['BTC-USD'],
+    fill='tonexty',
+    mode='none',
+    fillcolor='rgba(255, 255, 0, 0.5)',
+    name='BTC Gains Over CRO'
+)
 
-# Highlight non-overlapping areas where CRO-USD outperforms BTC-USD
-plt.fill_between(percent_changes.index, percent_changes['CRO-USD'], percent_changes['BTC-USD'], 
-                 where=cro_over_btc, facecolor='darkred', alpha=0.5, interpolate=True,
-                 label='CRO Gains Over BTC')
+cro_over_btc = go.Scatter(
+    x=percent_changes.index,
+    y=percent_changes['CRO-USD'],
+    fill='tonexty',
+    mode='none',
+    fillcolor='rgba(0, 0, 255, 0.5)',
+    name='CRO Gains Over BTC'
+)
 
-plt.title('Daily Percentage Price Change Over the Last 2 Months')
-plt.xlabel('Date')
-plt.ylabel('Percentage Change')
-plt.legend()
-plt.grid(True)
-plt.show()
+# Create the layout
+layout = go.Layout(
+    title='Daily Percentage Price Change Over the Last 2 Months',
+    xaxis=dict(title='Date'),
+    yaxis=dict(title='Percentage Change'),
+    showlegend=True
+)
+
+# Combine the traces and layout into a figure
+fig = go.Figure(data=[btc_trace, cro_over_btc, cro_trace, btc_over_cro], layout=layout)
+
+# Show the plot
+fig.show()
+
+
 

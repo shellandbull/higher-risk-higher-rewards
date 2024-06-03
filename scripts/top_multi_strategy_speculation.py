@@ -1,6 +1,6 @@
 import yfinance as yf
 import numpy as np
-import matplotlib.pyplot as plt
+import plotly.graph_objs as go
 import pandas as pd
 
 # Fetch historical data
@@ -30,13 +30,13 @@ def simulate_trading(data, initial_btc, initial_cro, trade_amount):
         btc_change = (btc_price - btc_price_yesterday) / btc_price_yesterday
         cro_change = (cro_price - cro_price_yesterday) / cro_price_yesterday
         
-        # Determine if a trade should be made (50% of the base value)
-        if btc_change > cro_change:  # BTC did better, sell 50% BTC
+        # Determine if a trade should be made (trade_amount of the base value)
+        if btc_change > cro_change:  # BTC did better, sell some BTC
             btc_to_trade = trade_amount * btc_held
             cro_received = btc_to_trade * btc_price / cro_price
             btc_held -= btc_to_trade
             cro_held += cro_received
-        elif cro_change > btc_change:  # CRO did better, sell 50% CRO
+        elif cro_change > btc_change:  # CRO did better, sell some CRO
             cro_to_trade = trade_amount * cro_held
             btc_received = cro_to_trade * cro_price / btc_price
             cro_held -= cro_to_trade
@@ -54,20 +54,47 @@ def main():
     portfolio_value = simulate_trading(data, initial_btc, initial_cro, 0.5)
     portfolio_value_at_small_trades = simulate_trading(data, initial_btc, initial_cro, 0.1)
     portfolio_value_at_large_trades = simulate_trading(data, initial_btc, initial_cro, 0.8)
-    trading_everything              = simulate_trading(data, initial_btc, initial_cro, 1.0) 
-    
-    # Plotting the portfolio value
-    plt.figure(figsize=(10, 6))
-    plt.plot(data.index[1:], portfolio_value, label="Trading 50% at a time")
-    plt.plot(data.index[1:], portfolio_value_at_small_trades, label="Trading 10% at a time")
-    plt.plot(data.index[1:], portfolio_value_at_large_trades, label="Trading 80% at a time")
-    plt.plot(data.index[1:], trading_everything, label="Trading everything")
-    plt.title('Portfolio Value Over Time')
-    plt.xlabel('Date')
-    plt.ylabel('Portfolio Value (USD)')
-    plt.legend()
-    plt.grid(True)
-    plt.show()
+    trading_everything = simulate_trading(data, initial_btc, initial_cro, 1.0) 
+
+    # Create 2D plot with Plotly
+    fig = go.Figure()
+
+    fig.add_trace(go.Scatter(
+        x=data.index[1:],
+        y=portfolio_value,
+        mode='lines',
+        name='Trading 50% at a time'
+    ))
+
+    fig.add_trace(go.Scatter(
+        x=data.index[1:],
+        y=portfolio_value_at_small_trades,
+        mode='lines',
+        name='Trading 10% at a time'
+    ))
+
+    fig.add_trace(go.Scatter(
+        x=data.index[1:],
+        y=portfolio_value_at_large_trades,
+        mode='lines',
+        name='Trading 80% at a time'
+    ))
+
+    fig.add_trace(go.Scatter(
+        x=data.index[1:],
+        y=trading_everything,
+        mode='lines',
+        name='Trading everything'
+    ))
+
+    fig.update_layout(
+        title='Portfolio Value Over Time',
+        xaxis_title='Date',
+        yaxis_title='Portfolio Value (USD)',
+        showlegend=True
+    )
+
+    fig.show()
 
 # Run the main function
 main()

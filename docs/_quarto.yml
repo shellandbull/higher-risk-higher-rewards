@@ -1,11 +1,11 @@
 format:
   html: {toc: true, toc-depth: 4, theme: cosmo}
   revealjs: {theme: solarized, navigation-mode: vertical, transition: slide, background-transition: fade, incremental: true}
-project: {type: book}
+project:
+  type: book
 book:
-  title: "On higher risks yielding higher rewards"
   chapters: [index.qmd]
+  author: "Mario Gintili"
   page-navigation: false
-website:
   navbar: false
-  page-navigation: true
+  sidebar: false

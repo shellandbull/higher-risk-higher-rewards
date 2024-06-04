@@ -1,6 +1,7 @@
 ---
 title: On higher risk yielding higher rewards
 jupyter: python3
+page-navigation: false
 ---
 
 
@@ -26,7 +27,7 @@ This scientific journal is a straightforward study on flipping pairs, helping ho
 
 Using modern tools for scientific-grade research like [NumPy](https://numpy.org/), [Pandas](https://pandas.pydata.org/), [Matplotlib](https://matplotlib.org/), [LLMs & prompt engineering](https://circleci.com/blog/prompt-engineering/) & [Jupyter](https://jupyter.org/). We concluded that using the most volatile pairs in the market tend to yield the best rewards for this particular average joe strategy. 
 
-The study concludes that when aiming for the highest profits, flipping [shitcoins](https://www.investopedia.com/terms/s/shitcoin.asp) is the way to go
+The study concludes that for achieving the highest profits, trading [low-market-cap cryptocurrencies aka shitcoins](https://www.investopedia.com/terms/s/shitcoin.asp) proves to be the most effective strategy.
 
 
 ## Methodology
@@ -42,11 +43,11 @@ I am a software engineer that's worked with [Ruby/Rails](https://rubyonrails.org
 With new AI on the table, I decided to preload an [LLM](https://chatgpt.com/) with the relevant context & guide as if I was a technical lead guiding a developer through a tech stack I'm not savvy in. With that in mind, here's the full list of tools & techniques I used as-is to set this up:
 
 - [Yahoo Finance](https://uk.finance.yahoo.com/) for fetching financial instrument pricing data in a timeseries format
-- [Binancce](https://binance.org/) for fetching cryptocurrency financial instrument pricing data in a timeseries format
+- [Binance](https://binance.org/) for fetching cryptocurrency financial instrument pricing data in a timeseries format
 - [Python](https://www.python.org/) as the programming platform for the study
 - [Numpy](https://numpy.org/) for array manipulation
 - [Pandas](https://pandas.pydata.org/) for data analysis
-- [Matplotlib](https://matplotlib.org/) for data visualisation
+- [Plotly](https://plotly.com/) for data visualisation
 - [Jupyter Notebook](https://jupyter.org/) for organising everything together in a readable format
 - [Quarto](https://quarto.org/) for technical publishing
 - [Distill](https://distill.pub/) for inspiration on producing high grade scientific-style journals
